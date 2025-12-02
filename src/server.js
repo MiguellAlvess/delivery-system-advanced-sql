@@ -11,11 +11,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
-  next();
-});
-
 app.get("/produtos", produtoController.listar.bind(produtoController));
 app.get("/produtos/:id", produtoController.buscarPorId.bind(produtoController));
 app.post("/produtos", produtoController.criar.bind(produtoController));
@@ -29,20 +24,20 @@ app.put("/pedidos/:id", pedidoController.atualizar.bind(pedidoController));
 app.delete("/pedidos/:id", pedidoController.deletar.bind(pedidoController));
 
 app.post(
-  "/pedidos/gerar",
-  pedidoController.processarPedidoCompleto.bind(pedidoController)
+    "/pedidos/gerar",
+    pedidoController.processarPedidoCompleto.bind(pedidoController),
 );
 app.get(
-  "/pedidos/:id/total",
-  pedidoController.calcularTotal.bind(pedidoController)
+    "/pedidos/:id/total",
+    pedidoController.calcularTotal.bind(pedidoController),
 );
 app.get(
-  "/pedidos/estoque/:produto_id",
-  pedidoController.verificarEstoque.bind(pedidoController)
+    "/pedidos/estoque/:produto_id",
+    pedidoController.verificarEstoque.bind(pedidoController),
 );
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
 
 export default app;
