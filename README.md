@@ -5,10 +5,10 @@ O sistema implementa o fluxo de um delivery de restaurante, com foco principal n
 
 ## Tecnologias
 
-- Node.js (ES Modules)
+- Node.js 
 - Express.js
 - PostgreSQL
-- Docker & Docker Compose
+- Docker Compose
 - pg (PostgreSQL client)
 
 ## Estrutura do Projeto
